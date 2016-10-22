@@ -26,7 +26,7 @@ public class Logviewer {
     public Logviewer(String username, String channel)
     {
         this.user = username;
-        this.channel = channel.replaceAll(" ","");
+        this.channel = channel.trim();
     }
 
 
