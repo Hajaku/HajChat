@@ -456,7 +456,7 @@ Small Device Styles
     opacity: 1;
 }
 #images img:first-child {
-    left: 0;
+    left: 1;
 }
 #slider a {
     text-decoration: none;
