@@ -1,6 +1,6 @@
 {
   "name": "Hajchat",
-  "tagline": "A java based Twitch-Chat client, focused on moderation",
+  "tagline": "A Java based Twitch-Chat client, focused on moderation",
   "body": "**STILL UNDER CONSTRUCTION**\r\n\r\nHajChat is a Twitch-Chat client, focused on easier chat moderation\r\n\r\n**Features**\r\n\r\nIt offers several advantages over the standard webchat and other clients:\r\n* Supports all the base Twitch emotes and badges\r\n* Favorites (one-click access to your favorite chats)\r\n* Whisper integration\r\n* Direct access to [CBennis logviewer](cbenni.com)\r\n* Modlogs in all the channels you are mod in\r\n* Chatpause on keypress\r\n* Customizeable banbuttons (choose amount, time and more)\r\n* Automated keyword highlighting in custom color\r\n* Choose your preferred Chatlayout \r\n\r\n**Requirements**\r\n\r\nHajChat is open source and completly free. To run the program you need Java 8 or newer.\r\nIf you want to compile it yourself you can download the .zip containing the sources.\r\nOtherwise you can just download the compiled .jar here.\r\n\r\n\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
