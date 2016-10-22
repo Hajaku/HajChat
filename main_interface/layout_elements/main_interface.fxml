@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_interface.Main_window_controller">
+   <children>
+      <VBox alignment="BOTTOM_CENTER" prefHeight="800.0" prefWidth="150.0" HBox.hgrow="NEVER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefWidth="150.0" spacing="5.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Button fx:id="options_button" mnemonicParsing="false" onAction="#open_options" text="Options">
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="15.0" />
+                  <VBox prefHeight="315.0" prefWidth="150.0" style="-fx-border-color: black;">
+                     <children>
+                        <HBox maxHeight="30.0" prefHeight="30.0" prefWidth="0.0">
+                           <children>
+                              <TextArea fx:id="favorite_textfield" maxHeight="31.0" minHeight="20.0" prefHeight="30.0" promptText="Name favorite" HBox.hgrow="NEVER" />
+                              <Button fx:id="favorite_button" ellipsisString="" mnemonicParsing="false" onAction="#add_favorite" />
+                           </children>
+                        </HBox>
+                        <ListView fx:id="favorite_list" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="140.0" prefWidth="150.0" spacing="5.0" style="-fx-border-width: 1px; -fx-border-color: black;" VBox.vgrow="NEVER">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Logviewer">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="logviewer_username" alignment="CENTER" promptText="Username">
+                           <VBox.margin>
+                              <Insets left="2.0" right="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="logviewer_channel" alignment="CENTER" promptText="Channel">
+                           <VBox.margin>
+                              <Insets left="2.0" right="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Button onAction="#lookup_logs" mnemonicParsing="false" text="Lookup" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="150.0" VBox.vgrow="NEVER">
+               <children>
+                  <TextField fx:id="channel_field" minHeight="30" minWidth="60.0" promptText="Add channel" />
+                  <Button fx:id="channel_button" ellipsisString="+" mnemonicParsing="false" onAction="#add_chat" prefHeight="30" prefWidth="30" text="+" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TabPane fx:id="tab_pane" focusTraversable="false" prefHeight="800.0" prefWidth="1247.0" side="RIGHT" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+        <tabs>
+          <Tab fx:id="channel_tab" closable="false" text="Chats">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <ListView fx:id="chat_list" nodeOrientation="LEFT_TO_RIGHT" orientation="HORIZONTAL" prefHeight="800.0" prefWidth="1210.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="whisper_tab" closable="false">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="whisper_list" orientation="HORIZONTAL" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</HBox>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_interface.login.Login_controller">
+   <children>
+      <Separator opacity="0.0" orientation="VERTICAL" prefHeight="5.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="80.0">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <Separator opacity="0.0" orientation="VERTICAL" prefHeight="30.0" />
+      <VBox alignment="TOP_CENTER" spacing="10.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" underline="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <TextField fx:id="username_field" alignment="CENTER" promptText="Enter Username.">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Separator opacity="0.0" orientation="VERTICAL" prefHeight="30.0" />
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="300.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="oAuth-Token:" underline="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Hyperlink fx:id="oauth_hyperlink" text="Retrieve oAuth-Token">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Hyperlink>
+            <PasswordField fx:id="oauth_field" alignment="CENTER" promptText="Enter oAuth-Token.">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </PasswordField>
+            <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" />
+            <Text fx:id="wrong_login" fill="RED" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Incorrect Username or oAuth-Token.">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <Button fx:id="login_button" mnemonicParsing="false" onAction="#login_pressed" prefHeight="51.0" prefWidth="110.0" text="Login" />
+   </children>
+</VBox>

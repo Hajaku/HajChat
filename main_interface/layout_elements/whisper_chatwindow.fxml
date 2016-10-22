@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<VBox fx:id="boundary" spacing="2.0" style="-fx-border-width: 2pt; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_interface.favorites_whispers_options.Whisper_controller">
+   <children>
+      <HBox fx:id="whisper_controls" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="300.0" style="-fx-border-width: 1pt; -fx-border-color: black;" VBox.vgrow="NEVER">
+      <children>
+         <Separator opacity="0" prefWidth="3" />
+      </children>
+      </HBox>
+      <VBox VBox.vgrow="ALWAYS">
+         <children>
+            <ListView fx:id="whisper_view" prefHeight="0" prefWidth="300.0" VBox.vgrow="ALWAYS" />
+            <HBox VBox.vgrow="NEVER">
+               <children>
+                  <TextField fx:id="whisper_chatfield" prefHeight="31.0" prefWidth="235.0" promptText="Enter whisper." HBox.hgrow="ALWAYS" VBox.vgrow="NEVER" />
+                  <Button minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#send_whisper" text="Send" HBox.hgrow="NEVER" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

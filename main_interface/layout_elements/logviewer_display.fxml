@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="600.0" maxWidth="500.0" minHeight="600.0" minWidth="500.0" prefHeight="600.0" prefWidth="500.0" spacing="2.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_interface.logviewer.Logviewer_controller">
+   <children>
+      <HBox alignment="TOP_CENTER" prefHeight="30.0" VBox.vgrow="NEVER">
+         <children>
+            <Text fx:id="logs_title" strokeType="OUTSIDE" strokeWidth="0.0" text="Logs for Username in channel">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <TextArea fx:id="logviewer_textarea" prefHeight="560.0" prefWidth="500.0" VBox.vgrow="ALWAYS">
+         <padding>
+            <Insets left="2.0" right="2.0" />
+         </padding>
+      </TextArea>
+      <Hyperlink fx:id="link_user" onAction="#open_user_link" text="User_link" />
+      <FlowPane prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Logs provided by the awesome" textAlignment="RIGHT" wrappingWidth="310.0" />
+            <Hyperlink fx:id="link_cbenni" text="CBenni" onAction="#open_cbenni_link"/>
+         </children>
+      </FlowPane>
+   </children>
+</VBox>

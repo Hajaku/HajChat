@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_interface.favorites_whispers_options.Options_controller">
+   <children>
+      <Separator prefWidth="5.0" />
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Configurations" underline="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <HBox prefHeight="30.0" prefWidth="600.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chatboxstyle:" underline="true" wrappingWidth="200.0" />
+                  <ChoiceBox fx:id="chatboxstyle_picker" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="19.0" prefWidth="600.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Buttoncount:" underline="true" wrappingWidth="200.0" />
+                  <ChoiceBox fx:id="buttoncount_picker" prefHeight="31.0" prefWidth="148.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="120.0" prefWidth="600.0">
+               <children>
+                  <VBox>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Timeout durations:" underline="true" wrappingWidth="200.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First button is always permaban.">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <ListView fx:id="button_times_list" editable="true" prefHeight="160" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Keywords:" underline="true" wrappingWidth="100.0" />
+                  <VBox prefHeight="100.0" prefWidth="400.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="300.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current:" wrappingWidth="100.0" />
+                              <Text fx:id="keyword_display" strokeType="OUTSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="300.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New:" wrappingWidth="100.0" />
+                              <TextField fx:id="new_keywords" prefHeight="57.0" prefWidth="307.0" promptText="Enter comma separated keywords here." />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="600.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Keyword-Color:" underline="true" wrappingWidth="200.0" />
+                  <ColorPicker fx:id="highlight_picker" />
+               </children>
+            </HBox>
+            <HBox prefHeight="140.0" prefWidth="600.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chatpause Key:" underline="true" wrappingWidth="200.0" />
+                  <VBox prefHeight="70.0" prefWidth="400.0">
+                     <children>
+                        <HBox prefHeight="30.0" prefWidth="236.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Key:" wrappingWidth="120.0" />
+                              <Text fx:id="keycode_display" strokeType="OUTSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <Button fx:id="keycode_button" mnemonicParsing="false" onAction="#request_new_keycode" prefHeight="30.0" prefWidth="300.0" text="Set new key" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <VBox alignment="TOP_CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#save_changes" prefHeight="31.0" prefWidth="150.0" text="Save changes">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Refresh chats to apply changes.">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="5.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="boundingbox" alignment="CENTER_LEFT" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chat_interface.chatbox.Chatbox_controller">
+   <children>
+      <HBox fx:id="chatheader" alignment="CENTER_LEFT" prefHeight="30.0" />
+      <FlowPane fx:id="textbox" alignment="CENTER_LEFT" prefHeight="30.0" />
+   </children>
+</HBox>

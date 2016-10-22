@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#unpause_chat_key" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chat_interface.chat_window.Chat_window_controller">
+   <children>
+      <HBox prefHeight="-Infinity" prefWidth="-Infinity">
+         <children>
+            <Text fx:id="slow_label" strokeType="OUTSIDE" strokeWidth="0.0" text="Slow: " wrappingWidth="75" />
+            <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="100.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Subonly:" wrappingWidth="70.7" />
+                  <Circle fx:id="indicator_sub" fill="red" radius="8.0" stroke="BLACK" strokeType="INSIDE" styleClass="indicator_red" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="115.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emoteonly:" wrappingWidth="84.5" />
+                  <Circle fx:id="indicator_emote" fill="red" radius="8.0" stroke="BLACK" strokeType="INSIDE" styleClass="indicator_red" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="69.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="R9K:" wrappingWidth="40.0" />
+                  <Circle fx:id="indicator_r9k" fill="red" radius="8.0" stroke="BLACK" strokeType="INSIDE" styleClass="indicator_red" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <ListView fx:id="scroll_pane" cacheShape="false" focusTraversable="false" onKeyPressed="#pause_chat_key" onKeyReleased="#unpause_chat_key" onMouseEntered="#mouse_enter" onMouseExited="#mouse_exit" prefHeight="710.0" prefWidth="600.0" styleClass="list-view" VBox.vgrow="ALWAYS" />
+      <HBox prefHeight="70" prefWidth="-Infinity">
+         <children>
+            <TextArea fx:id="messagefield" prefHeight="70" prefRowCount="1" promptText="Enter text here." wrapText="true" HBox.hgrow="ALWAYS" />
+            <Button fx:id="send_button" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#send_button_pressed" prefHeight="100.0" prefWidth="100.0" text="Send" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
