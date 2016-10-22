@@ -241,6 +241,7 @@ public class Main_window_controller {
     {
         if(login==null)return;
         String s = channel_field.getText();
+        if(s==null||s.equals(""))return;
         if(s.charAt(0)=='#')s = s.substring(1);
         channel_field.setText(null);
         if(!s.contains(",")) {

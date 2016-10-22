@@ -27,6 +27,7 @@ import java.util.prefs.Preferences;
  *
  * TODO: Important:
  * colors disappearing -_- (probably a caching issue or something similar)
+ * remove saved badges/cheerbadges
  *
  * TODO: Not urgent:
  *

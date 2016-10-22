@@ -70,14 +70,17 @@ public class Chat_window {
             case "CHEERMSG":
                 cheer = true;
             case "PRVMSG":
-                Chatelement_wrapper chat1 = controller.get_free_chatbox();
-                if(chat1==null)
+                //TODO disabled in this build due to caching bug (colors disappearing)
+                //Chatelement_wrapper chat1 = controller.get_free_chatbox();
+
+                Chatelement_wrapper chat1;
+                if(true || chat1==null)
                 {
                     chat1 = new Chatelement_wrapper(new Chatbox(c, cw, mainwindow.widthProperty()));
                 }
                 else
                 {
-                    System.out.println("Reused chatbox"); //TODO remove this
+                    //System.out.println("Reused chatbox"); //TODO remove this
                 }
                 Chatbox chat = chat1.get_chatbox_direct();
                 chat.fill_chat_message(message, cheer);

@@ -55,7 +55,7 @@ public class Chatbox_controller {
         textbox.setStyle("");
         chatheader.getChildren().clear();
 
-        System.out.println("RESET: "+id);
+        //System.out.println("RESET: "+id);
     }
 
     //Called on user ban, sets opacity to 35%
@@ -132,7 +132,7 @@ public class Chatbox_controller {
             }
         }
 
-        System.out.println("COLOR: "+color+ " in "+id);//TODO remove this
+        ///System.out.println("COLOR: "+color+ " in "+id);//TODO remove this
 
         t.setStyle("-fx-font-weight: bold;-fx-fill: "+color);
 

@@ -29,9 +29,6 @@ public class Chatbox {
     private String user = "";
     private Chat_window cw;
 
-
-
-
     //Constructor for the chatbox, used for regular chatboxes
     public Chatbox(Constants constants, Chat_window cw, ReadOnlyDoubleProperty widthproperty)
     {
