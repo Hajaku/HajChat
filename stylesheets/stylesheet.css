@@ -428,16 +428,16 @@ Small Device Styles
 */
 
 #images {
-    width: 400px;
-    height: 250px;
+    width: 710px;
+    height: 406px;
     overflow: hidden;
     position: relative;
 
     margin: 20px auto;
 }
 #images img {
-    width: 400px;
-    height: 250px;
+    width: 706px;
+    height: 406px;
 
     position: absolute;
     top: 0;
