@@ -436,7 +436,7 @@ Small Device Styles
     margin: 20px auto;
 }
 #images img {
-    width: 706px;
+    width: 710px;
     height: 406px;
 
     position: absolute;
@@ -456,7 +456,7 @@ Small Device Styles
     opacity: 1;
 }
 #images img:first-child {
-    left: 1;
+    left: 0;
 }
 #slider a {
     text-decoration: none;
