@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 /**
  * Created by Leander on 21.08.2016.
  * Loads all of the badges from the local memory, instantiated for each channel, loads subbadge from the net
- * Also handles emotes inside of messages, these are fetched from the twitch  kraken api
+ * Also handles emotes inside of messages, these are fetched from the twitch kraken api
  */
 public class Image_handler {
     private final static Logger LOGGER = Logger.getGlobal();
@@ -57,13 +57,13 @@ public class Image_handler {
     private void load_badges()
     {
         try {
-                staff = new Image(getClass().getResourceAsStream("/Data/badges/userbadges/staff.png"));
-                admin = new Image(getClass().getResourceAsStream("/Data/badges/userbadges/admin.png"));
-                globalmod = new Image(getClass().getResourceAsStream("/Data/badges/userbadges/globalmod.png"));
-                broadcaster = new Image(getClass().getResourceAsStream("/Data/badges/userbadges/broadcaster.png"));
-                mod = new Image(getClass().getResourceAsStream("/Data/badges/userbadges/mod.png"));
-                turbo = new Image(getClass().getResourceAsStream("/Data/badges/userbadges/turbo.png"));
-                premium = new Image(getClass().getResourceAsStream("/Data/badges/userbadges/premium.png"));
+                staff = new Image("https://static-cdn.jtvnw.net/chat-badges/staff.png");
+                admin = new Image("https://static-cdn.jtvnw.net/chat-badges/admin.png");
+                globalmod = new Image("https://static-cdn.jtvnw.net/chat-badges/globalmod.png");
+                broadcaster = new Image("https://static-cdn.jtvnw.net/chat-badges/broadcaster.png");
+                mod = new Image("https://static-cdn.jtvnw.net/chat-badges/mod.png");
+                turbo = new Image("https://static-cdn.jtvnw.net/chat-badges/turbo.png");
+                premium = new Image("https://static-cdn.jtvnw.net/badges/v1/a1dd5073-19c3-4911-8cb4-c464a7bc1510/1");
         }catch (Exception e){
             e.printStackTrace();
             LOGGER.info(e.getMessage());
@@ -74,18 +74,18 @@ public class Image_handler {
     private void load_cheerbadges()
     {
         try {
-            cheer[0] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/gray.png"));
-            cheer[1] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/purple.png"));
-            cheer[2] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/green.png"));
-            cheer[3] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/blue.png"));
-            cheer[4] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/red.png"));
-            cheer[5] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/gold.png"));
-            cheer_animated[0] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/gray.gif"));
-            cheer_animated[1] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/purple.gif"));
-            cheer_animated[2] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/green.gif"));
-            cheer_animated[3] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/blue.gif"));
-            cheer_animated[4] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/red.gif"));
-            cheer_animated[5] = new Image(getClass().getResourceAsStream("/Data/badges/cheerbadges/gold.gif"));
+            cheer[0] = new Image("http://static-cdn.jtvnw.net/bits/light/static/gray/1");
+            cheer[1] = new Image("http://static-cdn.jtvnw.net/bits/light/static/purple/1");
+            cheer[2] = new Image("http://static-cdn.jtvnw.net/bits/light/static/green/1");
+            cheer[3] = new Image("http://static-cdn.jtvnw.net/bits/light/static/blue/1");
+            cheer[4] = new Image("http://static-cdn.jtvnw.net/bits/light/static/red/1");
+            cheer[5] = new Image("http://static-cdn.jtvnw.net/bits/light/static/gold/1");
+            cheer_animated[0] = new Image("http://static-cdn.jtvnw.net/bits/light/animated/gray/1");
+            cheer_animated[1] = new Image("http://static-cdn.jtvnw.net/bits/light/animated/purple/1");
+            cheer_animated[2] = new Image("http://static-cdn.jtvnw.net/bits/light/animated/green/1");
+            cheer_animated[3] = new Image("http://static-cdn.jtvnw.net/bits/light/animated/blue/1");
+            cheer_animated[4] = new Image("http://static-cdn.jtvnw.net/bits/light/animated/red/1");
+            cheer_animated[5] = new Image("http://static-cdn.jtvnw.net/bits/light/animated/gold/1");
         }catch(Exception e){
             e.printStackTrace();
             LOGGER.info(e.getMessage());
