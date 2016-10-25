@@ -101,6 +101,10 @@ public class Modlog_handler {
                 if(!line[5].equals("NULL")) t = t+"\n"+"Reason: "+line[5];
                 return t;
 
+            case "untimeout":
+                t = line[2] + " untimeouted "+line[3]+".";
+                return t;
+
             case "ban":
                 t = line[2] + " banned "+line[3]+".";
                 if(!line[4].equals("NULL")) t = t+"\n"+"Reason: "+line[4];

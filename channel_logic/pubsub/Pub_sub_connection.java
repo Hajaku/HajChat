@@ -3,6 +3,7 @@ package channel_logic.pubsub;
 import com.google.gson.Gson;
 import main_interface.login.Login_information;
 import main_interface.modlog.Modlog_handler;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -180,6 +181,7 @@ public class Pub_sub_connection extends Thread{
     {
         //Format: [CHANNEL,TYPE,USER,TARGET,TIME,COMMENT]
         String[] moderator_action = {"NULL","NULL","NULL","NULL","NULL","NULL"};
+
         try {
             Gson g = new Gson();
             Map jsonobject = g.fromJson(message, Map.class);
