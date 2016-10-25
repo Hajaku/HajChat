@@ -2,11 +2,14 @@ package chat_interface.chat_window;
 
 import channel_logic.misc_util.Constants;
 
+import java.util.logging.Logger;
+
 /**
  * Created by Leander on 19.08.2016.
  * Wrapper for the chatwindow to enable multithreading, initializes a chatwindow inside of a new thread
  */
 public class Chat_window_thread_wrapper extends Thread {
+    private final static Logger LOGGER = Logger.getGlobal();
 
     private Chat_window cw = null;
     private Constants c;
@@ -29,12 +32,15 @@ public class Chat_window_thread_wrapper extends Thread {
     //Returns a reference to the started application, waits till applications starts.
     public Chat_window get_chat_window()
     {
-        while(true){
+        int i = 0;
+        while(i<5000){
+            try{Thread.sleep(1);}catch (Exception e){e.printStackTrace();LOGGER.info(e.getMessage());}
             synchronized (this)
             {
-                if (initialized) {break;}
+                if (initialized) {return cw;}
             }
+            ++i;
         }
-        return cw;
+        throw new RuntimeException("Creation of chatwindow timed out.");
     }
 }
