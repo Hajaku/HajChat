@@ -10,8 +10,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
-import java.util.Random;
-
 /**
  * Created by Leander
  * Controller for a chatbox, handles selecting the color for the user and displaying all of the given content inside of
@@ -78,9 +76,8 @@ public class Chatbox_controller {
     }
 
     //Adds an image to the chatbox
-    void add_chatbox(Image img)
+    void add_chatbox(ImageView imv)
     {
-        ImageView imv = new ImageView(img);
         textbox.getChildren().add(imv);
     }
     //Overloaded add_chatbox, displays tooltip
@@ -155,9 +152,8 @@ public class Chatbox_controller {
     }
 
     //Adds an image to the header, mainly used in badge
-    void add_header(Image img)
+    void add_header(ImageView imv)
     {
-        ImageView imv = new ImageView(img);
         chatheader.getChildren().add(imv);
     }
     //Adds a button to the chatbox, no eventhandling is done here. Used for the banbuttons

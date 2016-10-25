@@ -1,13 +1,14 @@
 package chat_interface.chatbox;
 
 import channel_logic.misc_util.Constants;
-import chat_interface.chat_window.Chat_window;
 import channel_logic.misc_util.Image_handler;
+import chat_interface.chat_window.Chat_window;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
@@ -216,7 +217,7 @@ public class Chatbox {
             else if(cheers&&s.matches("[\\s|\\0001]?cheer\\d+[\\s|\\0001]?"))
             {
                 s = s.substring(s.indexOf('r')+1);
-                controller.add_chatbox(imh.request_cheeremote(Integer.parseInt(s),true));
+                controller.add_chatbox(new ImageView(imh.request_cheeremote(Integer.parseInt(s),true)));
                 controller.add_chatbox(new Text(s));
             }
             else if(s.length()<10)

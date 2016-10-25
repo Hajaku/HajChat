@@ -2,7 +2,9 @@ package channel_logic.misc_util;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -127,21 +129,24 @@ public class Image_handler {
     }
 
     //Extracts the number of months from the badge string and returns the appropriate badge
-    private Image request_subbadge(String badge)
+    private ImageView request_subbadge(String badge)
     {
         try{
             int month = Integer.parseInt(badge.substring(badge.indexOf("/")+1));
-            return sub.get(month);
+            ImageView subbadge = new ImageView(sub.get(month));
+            Tooltip tooltip = new Tooltip("Subscriber for atleast " + month + " months.");
+            Tooltip.install(subbadge,tooltip);
+            return subbadge;
         }catch (Exception e){e.printStackTrace();LOGGER.info(e.getMessage());}
         return null;
     }
 
     //Returns the requested badge, default return is "Kappa" emote.
-    public Image request_badge(String badge)
+    public ImageView request_badge(String badge)
     {
         if(badge.contains("bits"))
         {
-            return request_cheerbadge(badge,true);
+            return new ImageView(request_cheerbadge(badge,true));
         }
         if(badge.contains("subscriber"))
         {
@@ -149,35 +154,38 @@ public class Image_handler {
         }
         if(badge.contains("turbo"))
         {
-            return turbo;
+            return new ImageView(turbo);
         }
         if(badge.contains("premium"))
         {
-            return premium;
+            return new ImageView(premium);
         }
         if(badge.contains("broadcaster"))
         {
-            return broadcaster;
+            return new ImageView(broadcaster);
         }
         if(badge.contains("moderator"))
         {
-            return mod;
+            return new ImageView(mod);
         }
         if(badge.contains("admin"))
         {
-            return admin;
+            return new ImageView(admin);
         }
         else if(badge.contains("staff"))
         {
-            return staff;
+            return new ImageView(staff);
         }
         else if(badge.contains("global_mod"))
         {
-            return globalmod;
+            return new ImageView(globalmod);
         }
 
-        return new Image("http://static-cdn.jtvnw.net/emoticons/v1/25/1.0");//Kappa, returns as placeholder when invalid badge is requested
+        return new ImageView(new Image("http://static-cdn.jtvnw.net/emoticons/v1/25/1.0"));//Kappa, returns as placeholder when invalid badge is requested
     }
+
+
+
 
     //Returns a cheerbadge
     private Image request_cheerbadge(String cheer_badge,boolean animated)
