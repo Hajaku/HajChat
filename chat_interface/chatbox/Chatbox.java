@@ -211,8 +211,8 @@ public class Chatbox {
             {
                 s = s.replaceAll(" ","").replaceAll("\\0001","");
                 s = s.substring(7);
-                String tooltip = s.substring(s.indexOf(")")+1);
-                controller.add_chatbox(imh.request_emote(s),tooltip);
+
+                controller.add_chatbox(imh.request_emote(s));
             }
             else if(cheers&&s.matches("[\\s|\\0001]?cheer\\d+[\\s|\\0001]?"))
             {

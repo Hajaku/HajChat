@@ -30,10 +30,11 @@ public class Chat_window_thread_wrapper extends Thread {
     }
 
     //Returns a reference to the started application, waits till applications starts.
+    //times the reference getting out if it takes more than 10 seconds
     public Chat_window get_chat_window()
     {
         int i = 0;
-        while(i<5000){
+        while(i<10000){
             try{Thread.sleep(1);}catch (Exception e){e.printStackTrace();LOGGER.info(e.getMessage());}
             synchronized (this)
             {

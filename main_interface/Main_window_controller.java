@@ -1,8 +1,9 @@
 package main_interface;
 
 import channel_logic.Channel_wrapper;
-import channel_logic.misc_util.Constants;
 import channel_logic.irc_connection_and_parsers.Whisper_handler;
+import channel_logic.misc_util.Constants;
+import chat_interface.chatbox.Chatbox;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
@@ -26,7 +27,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import chat_interface.chatbox.Chatbox;
 import main_interface.favorites_whispers_options.Favorite_box_controller;
 import main_interface.favorites_whispers_options.Options_controller;
 import main_interface.favorites_whispers_options.Whisper_controller;
@@ -61,7 +61,7 @@ public class Main_window_controller {
     private Button options_button;
 
     @FXML
-    private TextArea favorite_textfield;
+    private TextField favorite_textfield;
 
     @FXML
     private Button favorite_button;
@@ -232,7 +232,7 @@ public class Main_window_controller {
         chat_windows.add(boundary);
 
         //Add channel to modlogger
-        modlog_handler.add_channel(chatname);
+        if(modlog_handler!=null)modlog_handler.add_channel(chatname);
     }
 
     @FXML

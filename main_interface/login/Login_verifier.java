@@ -1,6 +1,9 @@
 package main_interface.login;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.logging.Logger;
 
@@ -14,7 +17,8 @@ class Login_verifier {
     boolean verify_login(String user, String pw)
     {
         try {
-            if(user.matches("^justinfan(\\d+)?$"))return true;
+            if(user.matches("^justinfan(\\d+)?$")||(user.equals("")&&pw.equals("")))return true;
+            if(pw.length()<6)return false;
             if(!pw.substring(0,6).equals("oauth:"))pw = "oauth:"+pw;
 
             Socket test_connection = new Socket("irc.twitch.tv", 6667);

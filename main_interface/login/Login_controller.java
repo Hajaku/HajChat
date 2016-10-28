@@ -3,8 +3,8 @@ package main_interface.login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -58,7 +58,7 @@ public class Login_controller {
         }catch (Exception e){e.printStackTrace();LOGGER.info(e.getMessage());}
 
         //installs the login tooltip
-        Tooltip logintip = new Tooltip("For read only access use User: justinfan1234 with no/random password.");
+        Tooltip logintip = new Tooltip("For read only access leave user empty/use justinfan as nick");
         Tooltip.install(username_field,logintip);
         Tooltip.install(oauth_field,logintip);
     }
@@ -69,12 +69,14 @@ public class Login_controller {
 
         String user = username_field.getText();
         String oauth = oauth_field.getText();
+        if(user.equals(""))user = "justinfan123423";
         login = new Login_information(user, oauth);
         Login_verifier verifier = new Login_verifier();
-
+        boolean read_only;
         if(verifier.verify_login(user,oauth))
         {
-            if(!user.matches("^justinfan(\\d+)?$"))
+            read_only = (user.matches("^justinfan(\\d+)?$")||(user.equals("")&&oauth.equals("")));
+            if(!read_only)
             {
                 try {
                     Preferences login_save = Preferences.userNodeForPackage(Login_controller.class);
@@ -90,7 +92,7 @@ public class Login_controller {
             Stage stage = (Stage) n.getScene().getWindow();
             stage.close();
             //start actual application
-            mw.start_main_application(login,user.matches("^justinfan(\\d+)?$"));
+            mw.start_main_application(login,read_only);
         }
         else
         {

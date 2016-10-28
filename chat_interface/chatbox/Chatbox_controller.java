@@ -3,8 +3,6 @@ package chat_interface.chatbox;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -80,15 +78,6 @@ public class Chatbox_controller {
     {
         textbox.getChildren().add(imv);
     }
-    //Overloaded add_chatbox, displays tooltip
-    void add_chatbox(Image img,String tooltip)
-    {
-        Tooltip t = new Tooltip(tooltip);
-        ImageView imv = new ImageView(img);
-        Tooltip.install(imv,t);
-        textbox.getChildren().addAll(imv);
-    }
-
 
     //Adds a name to the header, if no color is given it uses a random one from the colorselection
     void add_header(Text t, String color, boolean compact)

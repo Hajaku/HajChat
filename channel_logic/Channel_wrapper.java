@@ -27,6 +27,7 @@ public class Channel_wrapper {
             cwtw.start();
             System.out.println("User Interface started");
             Chat_window cw = cwtw.get_chat_window();
+            if(cw==null)return;
             System.out.println("User Interface Reference obtained");
             ch = new channel_logic.Channel_handler(c, cw);
             ch.start();

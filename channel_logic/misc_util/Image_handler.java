@@ -2,14 +2,16 @@ package channel_logic.misc_util;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -37,7 +39,7 @@ public class Image_handler {
 
     private HashMap<Integer,Image> sub = new HashMap<>();
 
-    private ArrayList<image_wrapper> image_cache = new ArrayList<>();
+    private HashMap<String,Image> image_cache = new HashMap<>();
 
     Image_handler(String channel,String channel_id)
     {
@@ -135,7 +137,7 @@ public class Image_handler {
             int month = Integer.parseInt(badge.substring(badge.indexOf("/")+1));
             ImageView subbadge = new ImageView(sub.get(month));
             Tooltip tooltip = new Tooltip("Subscriber for atleast " + month + " months.");
-            Tooltip.install(subbadge,tooltip);
+            Tooltip.install(subbadge,change_tooltip_delay(tooltip));
             return subbadge;
         }catch (Exception e){e.printStackTrace();LOGGER.info(e.getMessage());}
         return null;
@@ -206,66 +208,54 @@ public class Image_handler {
     }
 
     //Returns the requested emote, first checks the image_cache, if not found loads from internet
-    public Image request_emote(String emote)
+    public ImageView request_emote(String emote)
     {
-        for(int i=0;i<image_cache.size();i++)
-        {
-            image_wrapper imw = image_cache.get(i);
-            //If element is found in cache its wrapper is put at position 0 and the corresponding image is returned
-            if(imw.check_name(emote))
-            {
-                Image return_image = imw.get_image();
-                image_cache.remove(i);
-                image_cache.add(0,imw);
-                return return_image;
-            }
-        }
+        String tooltip = emote.substring(emote.indexOf(")")+1);
+        Tooltip t = change_tooltip_delay(new Tooltip(tooltip));
+        ImageView return_imageview = null;
+        if(image_cache.containsKey(emote))return_imageview = new ImageView(image_cache.get(emote));
         //If not in cache, image is loaded from net
-        return load_emote_from_net(emote);
+        if(return_imageview==null)return_imageview = load_emote_from_net(emote);
+        Tooltip.install(return_imageview,t);
+        return return_imageview;
     }
 
     //Loads an emote from the twitch api
-    private Image load_emote_from_net(String name)
+    private ImageView load_emote_from_net(String name)
     {
         if(name.equals(""))return null;
         String emotecode = name.substring(1,name.indexOf(")"));
         String url = "http://static-cdn.jtvnw.net/emoticons/v1/"+emotecode+"/1.0";
         Image img = new Image(url);
 
-        if(image_cache.size()==50)
-        {
-            image_wrapper wrap = image_cache.get(49);
-            image_cache.remove(49);
-            wrap.set_name(name);
-            wrap.set_image(img);
-            image_cache.add(0,wrap);
-        }
-        else
-        {
-            image_wrapper wrap = new image_wrapper(name,img);
-            image_cache.add(0,wrap);
-        }
-        return new Image(url);
+        image_cache.put(name,img);
+        return new ImageView(img);
     }
 
-    //Private class used to cache images
-    private class image_wrapper
-    {
-        private String name;
-        private Image image;
 
-        image_wrapper(String name,Image img)
-        {
-            this.image = img;
-            this.name = name;
+    //As java 8 does not support changing the delay of tooltips yet (introduced in java 9) changed using reflection
+    private static Tooltip change_tooltip_delay(Tooltip tooltip) {
+
+        if(tooltip==null)return tooltip;
+        try {
+            Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
+            fieldBehavior.setAccessible(true);
+            Object objBehavior = fieldBehavior.get(tooltip);
+
+            Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
+            fieldTimer.setAccessible(true);
+            Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
+
+            objTimer.getKeyFrames().clear();
+            objTimer.getKeyFrames().add(new KeyFrame(new javafx.util.Duration(100)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.info(e.getMessage());
         }
+        return tooltip;
 
-        void set_name(String name){this.name = name;}
-        void set_image(Image image){this.image = image;}
-        Image get_image(){return image;}
-        String get_name(){return name;}
-        boolean check_name(String name){return this.name.equals(name);}
     }
+
 
 }
 
