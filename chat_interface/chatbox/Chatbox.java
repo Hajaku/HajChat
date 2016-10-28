@@ -13,6 +13,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Leander on 17.08.2016.
@@ -111,25 +113,14 @@ public class Chatbox {
     private void check_keywords(String message)
     {
         message = message.replaceAll("\\(\\d+\\)"," ");
-        //Check for mention
-        if(message.toLowerCase().contains(constants.get_user().toLowerCase()))
-        {
-            controller.mark_keywords(constants.get_keyword_color());
-            return;
-        }
         //Check for occurence of keywords
-        String[] keywords = constants.get_keywords();
-        for(String keyword:keywords)
-        {
-            if(message.toLowerCase().contains(keyword.toLowerCase()))
-            {
-                controller.mark_keywords(constants.get_keyword_color());
-                return;
-            }
-        }
-
-
+        Pattern keywords = constants.get_keyword_pattern();
+        Matcher matcher = keywords.matcher(message.toLowerCase());
+        if(matcher.matches())controller.mark_keywords(constants.get_keyword_color());
     }
+
+
+
 
     //Adds the number of buttons specified in misc_util
     private void add_buttons()

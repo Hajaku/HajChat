@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
+import java.util.regex.Pattern;
 
 /**
  * Created by Leander on 23.05.2016.
@@ -21,6 +22,7 @@ public class Constants {
     private int buttoncount = 3;
     private int[] timeoutduration = {3600,600};//Always one less as buttoncount, as button 0 is permaban
     private String[] keywords = {"banana","BibleThump"};
+    private Pattern keyword_pattern;
     private KeyCode keyCode = KeyCode.SPACE;
     private int chatboxcount = 100;
     private String keyword_color = "00ffff";
@@ -57,6 +59,21 @@ public class Constants {
             compact_chatbox = savestate.get("chatbox_type","").equals("1");
         }catch(Exception e){e.printStackTrace();LOGGER.info(e.getMessage());}
 
+        initialize_pattern();
+
+    }
+
+
+    //Creates the pattern used to match messages against keywords
+    private void initialize_pattern()
+    {
+        String regex = "(.*"+user;
+        for(String s:keywords)
+        {
+            regex = regex + ".*)||(.*"+s;
+        }
+        regex = regex +".*)";
+        keyword_pattern = Pattern.compile(regex);
     }
 
     //Fetches the user id from the net
@@ -89,6 +106,7 @@ public class Constants {
     public String get_channel(){return channel;}
     public Image_handler get_imagehandler(){return imh;}
     public String[] get_keywords(){return keywords;}
+    public Pattern get_keyword_pattern(){return keyword_pattern;}
     public KeyCode get_keycode(){return keyCode;}
     public int get_chatboxcount(){return chatboxcount;}
     public String get_keyword_color(){return keyword_color;}
