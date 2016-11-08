@@ -179,8 +179,7 @@ public class Pub_sub_connection extends Thread{
     //Handles the messages received by the websocket, first checks for pings or reconnect messages
     void handle_message(String message)
     {
-        //Format: [CHANNEL,TYPE,USER,TARGET,TIME,COMMENT]
-        String[] moderator_action = {"NULL","NULL","NULL","NULL","NULL","NULL"};
+
 
         try {
             Gson g = new Gson();
@@ -198,31 +197,42 @@ public class Pub_sub_connection extends Thread{
                     return;
                 }
 
-                if (type.equals("MESSAGE")) {
-                    Map data = (Map) jsonobject.get("data");
-                    String topic = (String) data.get("topic");
-                    Map msg_map = (Map) g.fromJson((String) data.get("message"), Map.class).get("data");
-                    String moderation_action = (String) msg_map.get("moderation_action");
-                    ArrayList<String> args = ((ArrayList<String>) msg_map.get("args"));
-                    String author = (String) msg_map.get("created_by");
-
-                    //Write results into the result string array
-                    moderator_action[0] = get_name(topic.substring(topic.lastIndexOf(".")+1));
-                    moderator_action[1] = moderation_action;
-                    moderator_action[2] = author;
-                    if(args!=null){
-                        for(int i=0;i<args.size();i++)
-                        {
-                            moderator_action[3+i] = args.get(i);
-                        }
-                    }
-
-                    modlog_handler.handle_line(moderator_action);
-
+                if (type.equals("MESSAGE"))
+                {
+                    parse_message(jsonobject,g);
                 }
             }
         }catch(Exception e){e.printStackTrace();LOGGER.info(e.getMessage());}
     }
+
+    //parses a message and extracts the information, forwards to modlog_handler
+    private void parse_message(Map jsonobject, Gson g)
+    {
+        //Format: [CHANNEL,TYPE,USER,TARGET,TIME,COMMENT]
+        String[] moderator_action = {"NULL","NULL","NULL","NULL","NULL","NULL"};
+
+
+        Map data = (Map) jsonobject.get("data");
+        String topic = (String) data.get("topic");
+        Map msg_map = (Map) g.fromJson((String) data.get("message"), Map.class).get("data");
+        String moderation_action = (String) msg_map.get("moderation_action");
+        ArrayList<String> args = ((ArrayList<String>) msg_map.get("args"));
+        String author = (String) msg_map.get("created_by");
+
+        //Write results into the result string array
+        moderator_action[0] = get_name(topic.substring(topic.lastIndexOf(".")+1));
+        moderator_action[1] = moderation_action;
+        moderator_action[2] = author;
+        if(args!=null){
+            for(int i=0;i<args.size();i++)
+            {
+                moderator_action[3+i] = args.get(i);
+            }
+        }
+
+        modlog_handler.handle_line(moderator_action);
+    }
+
 
     //Class used to keep up the connection with the websocket, calls ping in 4 minute intervals
     private class Pinger extends Thread
