@@ -228,6 +228,7 @@ public class Main_window_controller {
         if(login==null)return;
         if(chatname==null||chatname.equals("")||chatname.equals("null"))return;
         VBox boundary = generate_channelbox(chatname);
+
         chat_windows_stringlist.add(chatname);
         chat_windows.add(boundary);
 

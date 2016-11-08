@@ -26,7 +26,6 @@ import java.util.prefs.Preferences;
  * TODO: TESTING
  *
  * TODO: Important:
- * change keywords to regex pattern
  * colors disappearing -_- (probably a caching issue or something similar)
  *
  * TODO: Not urgent:
