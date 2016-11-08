@@ -39,7 +39,9 @@ public class Image_handler {
 
     private HashMap<Integer,Image> sub = new HashMap<>();
 
-    private HashMap<String,Image> image_cache = new HashMap<>();
+    private static HashMap<String,Image> image_cache = new HashMap<>();
+
+    private static boolean static_images_initialized = false;
 
     Image_handler(String channel,String channel_id)
     {
@@ -52,9 +54,13 @@ public class Image_handler {
     //initialize is called at the start of the application method.
     public void initialize()
     {
-        load_badges();
-        load_cheerbadges();
         initialize_subbadge();
+        synchronized (this) {
+            if(static_images_initialized)return;
+            load_badges();
+            load_cheerbadges();
+            static_images_initialized = true;
+        }
     }
 
     //Loads the badges
