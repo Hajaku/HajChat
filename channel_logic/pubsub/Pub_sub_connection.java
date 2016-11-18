@@ -179,8 +179,6 @@ public class Pub_sub_connection extends Thread{
     //Handles the messages received by the websocket, first checks for pings or reconnect messages
     void handle_message(String message)
     {
-
-
         try {
             Gson g = new Gson();
             Map jsonobject = g.fromJson(message, Map.class);

@@ -89,10 +89,12 @@ public class Chat_window {
                 break;
 
             case "SUB":
-                Text subtext = new Text(message[5]);
-                subtext.setStyle("-fx-font-weight: bold");
                 if( ! message[4].equals("NULL"))//If resub message is given
                 {
+                    Text subtext = new Text(message[5]);
+                    subtext.setStyle("-fx-font-weight: bold");
+                    subtext.wrappingWidthProperty()
+                            .bind(mainwindow.widthProperty().subtract(20));//ensure text has correct width
                     Chatbox chat2 = new Chatbox(c,cw,mainwindow.widthProperty());
                     chat2.fill_chat_message(message,false);
                     add_chatboxlist(chat2);
@@ -104,7 +106,7 @@ public class Chat_window {
                 }
                 else  //If no resub message is given
                 {
-                    controller.add_message(subtext);
+                    controller.add_text(message[5]);
                 }
                 break;
 
