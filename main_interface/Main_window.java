@@ -26,7 +26,7 @@ import java.util.prefs.Preferences;
  * TODO: TESTING
  *
  * TODO: Important:
- * fix long subscriber messages ( twitch prime blablabla)
+ * selectable text
  * colors disappearing -_- (probably a caching issue or something similar)
  *
  * TODO: Not urgent:

@@ -119,9 +119,6 @@ public class Chatbox {
         if(matcher.matches())controller.mark_keywords(constants.get_keyword_color());
     }
 
-
-
-
     //Adds the number of buttons specified in misc_util
     private void add_buttons()
     {
